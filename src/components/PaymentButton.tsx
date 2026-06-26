@@ -14,11 +14,10 @@ declare global {
 const PaymentButton: React.FC<PaymentButtonProps> = ({ edition }) => {
     const handlePayment = async () => {
         try {
-            // Create order from backend
             const data = await createOrder(edition);
 
             const options = {
-                key: data.key, // from backend
+                key: data.key,
                 amount: data.amount,
                 currency: data.currency,
                 name: "MangoSeed",
@@ -26,11 +25,8 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({ edition }) => {
                 order_id: data.id,
 
                 handler: function (response: any) {
-                    alert("Payment Successful!");
-
-                    console.log("Payment ID:", response.razorpay_payment_id);
-                    console.log("Order ID:", response.razorpay_order_id);
-                    console.log("Signature:", response.razorpay_signature);
+                    alert("Payment Successful");
+                    console.log(response);
                 },
 
                 prefill: {
@@ -54,7 +50,7 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({ edition }) => {
     return (
         <button
             onClick={handlePayment}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg"
         >
             Pay Now
         </button>
