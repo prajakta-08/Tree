@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none" stroke="currentColor">
+  <path d="M200 0 L200 40" stroke-width="2" opacity="0.4"/>
+  <path d="M200 40 Q180 60 160 80 Q140 100 120 120 Q100 140 80 160 Q60 180 40 200" stroke-width="1.5" opacity="0.35"/>
+  <path d="M200 40 Q220 60 240 80 Q260 100 280 120 Q300 140 320 160 Q340 180 360 200" stroke-width="1.5" opacity="0.35"/>
+  <path d="M200 40 Q190 70 170 100 Q150 130 130 160 Q110 190 100 200" stroke-width="1" opacity="0.3"/>
+  <path d="M200 40 Q210 70 230 100 Q250 130 270 160 Q290 190 300 200" stroke-width="1" opacity="0.3"/>
+  <path d="M200 40 Q195 80 185 120 Q175 160 170 200" stroke-width="0.8" opacity="0.25"/>
+  <path d="M200 40 Q205 80 215 120 Q225 160 230 200" stroke-width="0.8" opacity="0.25"/>
+  <path d="M160 80 Q140 90 120 100" stroke-width="0.8" opacity="0.25"/>
+  <path d="M240 80 Q260 90 280 100" stroke-width="0.8" opacity="0.25"/>
+  <path d="M120 120 Q100 130 85 140" stroke-width="0.6" opacity="0.2"/>
+  <path d="M280 120 Q300 130 315 140" stroke-width="0.6" opacity="0.2"/>
+  <circle cx="200" cy="30" r="8" opacity="0.3"/>
+  <circle cx="160" cy="80" r="4" opacity="0.2"/>
+  <circle cx="240" cy="80" r="4" opacity="0.2"/>
+  <circle cx="120" cy="120" r="3" opacity="0.2"/>
+  <circle cx="280" cy="120" r="3" opacity="0.2"/>
+</svg>

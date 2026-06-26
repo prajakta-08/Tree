@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" fill="currentColor">
+  <path d="M50 55C50 55 20 50 10 30C5 20 5 5 5 5C5 5 25 8 40 20C48 26 50 32 50 32C50 32 52 26 60 20C75 8 95 5 95 5C95 5 95 20 90 30C80 50 50 55 50 55Z"/>
+  <path d="M50 32L50 55" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M50 35L35 28" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M50 38L65 30" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M50 42L38 38" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M50 45L62 40" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+</svg>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://themangoseed.vercel.app/sitemap.xml

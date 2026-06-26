@@ -1,0 +1,129 @@
+------------------------------------------------------------
+TRACE ENTRY
+Timestamp: 2026-05-06 (catch-up entry, retroactive log of session work)
+User request: Build, correct, deploy, and brand The Mango Seed marketing site; ongoing brand/social setup
+Project: The Mango Seed marketing site (Vite + React + TypeScript)
+Task: Site fact audit, content corrections, deployment, ongoing typography + social copy
+Status: Live in production, ongoing iteration
+Time taken: Multi-session
+Token usage: Token usage not available
+
+Files changed/created/inspected:
+- src/pages/Author.tsx (chapter count 80->40; July 2025->2026 in two spots)
+- src/pages/Excerpts.tsx (chapter renumbering, quote attributions, Ch 6 Library of Dust replaced with verbatim text from working/by_version/pubready_v2/ch06.txt)
+- src/pages/Book.tsx (BOOKS extracted to lib/books-data.ts; LAWS section restyled with Playfair Display + Cormorant; SEASON_COLOUR restored after agent regression)
+- src/pages/Preorder.tsx (currency selector USD/GBP/AED/INR + per-currency price record + CurrencyContext + persistence + locale auto-detect; "Starting at INR 299" -> dynamic)
+- src/sections/BooksSection.tsx (uses shared 100-book list; modal renders quote for every book)
+- src/sections/ChapterSection.tsx, src/sections/JourneySection.tsx, src/sections/book/HeroSection.tsx, src/sections/book/SixSeasonsSection.tsx (chapter-count + range fixes)
+- src/lib/books-data.ts (NEW — shared 100-book list, BookData interface, with quote field)
+- public/author-dhruv.jpg (replaced with author headshot extracted from book PDF p.302; later to be replaced with The mango seed/AuthorImg.jpg per user request — pending)
+- vercel.json (NEW — SPA rewrite to /index.html)
+- .claude/agents/mango-site-editor.md (NEW — agent spec for site fact corrections)
+- ~/.claude/projects/.../memory/project_mango_seed_facts.md (NEW — Mango Seed key facts memory)
+
+Tools/scripts/commands used:
+- Read, Edit, Write, Grep, Glob, Bash
+- Python: PyMuPDF (fitz) to extract author photo from PDF; Pillow to re-encode to JPEG
+- npm install, npm run build, npx tsc -b --noEmit
+- npx vercel (login via OAuth device flow), npx vercel --prod, npx vercel alias set, npx vercel ls
+- general-purpose Agent (multiple runs): mango-site-editor workflow, 100 books extraction, quote generation for 88 books, Library of Dust replacement
+
+Steps completed:
+1. Audited site against book PDF; auto-applied chapter-count + chapter-numbering + quote-attribution fixes
+2. Fixed Author.tsx Ved birthday year 2025 -> 2026 (user correction)
+3. Replaced placeholder author image with headshot extracted from book PDF p.302
+4. Extracted 100-book list from book Appendix A, replaced 37-entry array
+5. Refactored shared BOOKS data into src/lib/books-data.ts; added quote field for all 100
+6. Refactored homepage BooksSection.tsx to render 100 books with modal quotes
+7. Restored SEASON_COLOUR after agent's destructive refactor regression
+8. Built per-currency pricing (USD/GBP/AED/INR) with selector, persistence, locale auto-detect
+9. Replaced invented Library of Dust Ch 6 excerpt with verbatim manuscript text
+10. Restyled "20 Core Laws of Life" section: Playfair italic numerals (clamp 44-72px), Playfair Display law text, Cormorant italic context, gold hairline ornament
+11. Deployed to Vercel: project "app" under "ziqsy" scope; alias themangoseed.vercel.app -> latest prod
+12. Configured Vercel deployment protection: instructed user to disable Vercel Authentication for public access
+
+Testing/verification:
+- npx tsc -b --noEmit: exit 0 after each major edit
+- npm run build: succeeded (~700KB JS, 88KB CSS)
+- Vercel production deployments: Ready
+
+Issues found:
+- Agent destructive refactor removed SEASON_COLOUR const while still referenced -> would have crashed Book page; fixed by re-adding const
+- Box-drawing characters (=) in source files corrupted on read with Bash (encoding mismatch) — worked around with smaller targeted Edit ops
+- Vercel "Vercel Authentication" enabled by default on Hobby projects blocks public access — user instructed to disable in dashboard
+
+Fixes applied: see Steps Completed
+
+How to repeat this work:
+1. cd "C:\Users\dhruv\OneDrive - TECHNICOLOGYLTD\Apps\Claude_Code\Kimi_Agent_Book Launch Marketing Blueprint\app"
+2. npm install
+3. npm run dev (preview at http://localhost:3000)
+4. npm run build && npx tsc -b --noEmit (verify)
+5. npx vercel --prod (deploy)
+6. npx vercel alias set <new-prod-url> themangoseed.vercel.app (re-point alias)
+
+Next recommended step:
+- Replace public/author-dhruv.jpg with C:\Users\dhruv\OneDrive - TECHNICOLOGYLTD\Apps\Claude_Code\The mango seed\AuthorImg.jpg per user request
+- Full content audit pass over remaining excerpts (Ch 1 monsoon/ant parable flagged earlier as not in book)
+- Wire social media handles into Author.tsx and Footer.tsx (currently href="#")
+- Decide on real testimonials vs. removing placeholder Early Reader quotes
+- Domain purchase (themangoseed.com) and DNS connection
+------------------------------------------------------------
+
+------------------------------------------------------------
+TRACE ENTRY
+Timestamp: 2026-06-22 (session: tech team handoff docs)
+User request: Revise handoff doc for what tech team needs to do; create reference doc for them to complete easily
+Project: The Mango Seed marketing site
+Task: Two-document handoff package
+Status: Complete
+Time taken: ~30 min
+Token usage: Token usage not available
+
+Files changed/created/inspected:
+- app/HANDOFF.md (rewritten — focused tech team punch list with P0/P1/P2 priorities)
+- app/TECH_REFERENCE.md (NEW — implementation cookbook with copy-paste code)
+
+Steps completed:
+1. Rewrote HANDOFF.md as a focused punch list:
+   - Priority-tagged work table (P0 / P1 / P2 / P3)
+   - "Open assumptions for Dhruv" — list of decisions blocking work
+   - "Already shipped" — explicit list so tech team doesn't redo work
+   - 30-minute onboarding sequence
+   - Hard constraints (no CMS pre-launch, no analytics without consent, etc.)
+   - File map + escalation contacts
+2. Created TECH_REFERENCE.md as the implementation cookbook:
+   - §1 Custom domain → DNS steps with registrar comparison
+   - §2 Brevo signup + domain auth
+   - §3 Newsletter API — complete VercelRequest/Response handler with Brevo integration
+   - §4 Contact API — same with transactional Brevo SMTP
+   - §5 Real Privacy + Terms — required GDPR disclosures
+   - §6 GA4 + GTM gated on cookie consent — complete analytics.ts + main.tsx wiring + page-view + event tracking
+   - §7 Pre-order checkout — Razorpay (IN) + Stripe (rest of world) with full handler sketches + webhook strategy
+   - §8 Amazon Author Central + ASIN linking
+   - §9 Backups strategy
+   - §10 Monitoring — Vercel Analytics + Speed Insights + Sentry + UptimeRobot
+   - §11 CRM (use Brevo, skip separate CRM at launch)
+   - §12 Future enhancements (membership, chatbot, merch)
+   - Appendix A — full env-vars reference table
+   - Appendix B — machine-readable API contracts
+   - Appendix C — Lighthouse / SEO launch checklist
+   - Appendix D — launch-day runbook
+
+Testing/verification:
+- HANDOFF.md and TECH_REFERENCE.md cross-reference correctly (numbered sections match priorities)
+- All code blocks compile-checked mentally; APIs match what's actually wired in src/lib/forms.ts
+
+Issues found: None
+
+Fixes applied: N/A
+
+How to repeat this work:
+- The two docs are self-contained handoff package.
+- If site code changes, update HANDOFF.md "Already shipped" section and TECH_REFERENCE.md code samples to match.
+
+Next recommended step:
+- Dhruv to walk tech team through HANDOFF.md in a kickoff call (~30 min)
+- Tech team to confirm the 10 open assumptions before starting §3
+- Begin work top-to-bottom on the priority table
+------------------------------------------------------------

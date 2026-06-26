@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #FDF6E3;
+    --parchment: #F5ECD7;
+    --warm-sand: #E8D5B7;
+    --amber: #D4A853;
+    --amber-deep: #B8923E;
+    --terracotta: #C4654A;
+    --terracotta-dark: #A34E35;
+    --ochre: #C4933F;
+    --mango-green: #4A6741;
+    --mango-green-dark: #3A5233;
+    --bark: #6B4C3B;
+    --bark-light: #8B6F5E;
+    --charcoal: #2C2417;
+    --desert-dust: #D4A574;
+    --sunset-rose: #D4866B;
+    --lotus-pink: #E8A598;
+    --raj-red: #A8423F;
+    --pure-white: #FFFFFF;
+
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Serif 4', serif;
+    background-color: var(--cream);
+    color: var(--bark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(212, 168, 83, 0.3);
+    color: var(--mango-green-dark);
+  }
+
+  /* Accessible focus ring — keyboard users only */
+  :focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Don't dim the focus ring for explicitly styled buttons */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .font-ui {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-script {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .text-display-xl {
+    font-size: 96px;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+  }
+
+  .text-display-lg {
+    font-size: 72px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .text-display-md {
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .text-display-sm {
+    font-size: 42px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(180deg, #2C2417 0%, #3D2E1F 40%, #5C3D2A 100%);
+  }
+
+  .gradient-sunset {
+    background: linear-gradient(135deg, #D4A574 0%, #C4654A 50%, #A8423F 100%);
+  }
+
+  .gradient-golden-hour {
+    background: linear-gradient(90deg, #FDF6E3 0%, #E8D5B7 50%, #D4A853 100%);
+  }
+
+  .gradient-tree-canopy {
+    background: linear-gradient(180deg, #2C2417 0%, rgba(44,36,23,0.8) 60%, rgba(44,36,23,0) 100%);
+  }
+
+  .gradient-warm-card {
+    background: linear-gradient(145deg, #F5ECD7 0%, #E8D5B7 100%);
+  }
+
+  .section-xl {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+
+  .section-lg {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .section-md {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .section-sm {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+@media (max-width: 1024px) {
+  @layer utilities {
+    .text-display-xl {
+      font-size: 64px;
+    }
+    .text-display-lg {
+      font-size: 52px;
+    }
+    .text-display-md {
+      font-size: 42px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  @layer utilities {
+    .text-display-xl {
+      font-size: 44px;
+    }
+    .text-display-lg {
+      font-size: 36px;
+    }
+    .text-display-md {
+      font-size: 32px;
+    }
+    .section-xl {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .section-lg {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+}
