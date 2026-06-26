@@ -1,5 +1,5 @@
 import React from "react";
-import { createOrder } from "../services/paymentService";
+import { createOrder } from "../../services/paymentService";
 
 interface PaymentButtonProps {
     edition: string;
